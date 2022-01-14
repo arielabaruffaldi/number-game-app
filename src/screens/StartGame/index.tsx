@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View} from 'react-native';
 
 import CustomText from '@atoms/CustomText';
@@ -6,14 +6,21 @@ import CustomText from '@atoms/CustomText';
 import styles from './styles';
 import StartGameCard from 'src/components/organism/StartGameCard';
 
-const StartGame = () => {
+interface StartGameProps {
+  number: string;
+  setNumber: (val: string) => void;
+}
+
+const StartGame = ({setNumber}: StartGameProps) => {
   return (
-    <View>
-      <CustomText customStyle={styles.title} size="medium" align="center">
-        Comenzar Juego
-      </CustomText>
-      <StartGameCard />
-    </View>
+    <>
+      <View style={styles.container}>
+        <CustomText style={styles.title} size="medium" align="center">
+          Comenzar Juego
+        </CustomText>
+        <StartGameCard action={setNumber} />
+      </View>
+    </>
   );
 };
 

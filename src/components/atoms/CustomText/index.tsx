@@ -3,7 +3,7 @@ import {Text, TextStyle} from 'react-native';
 import styles from './styles';
 
 interface CustomTextProps {
-  customStyle?: TextStyle | TextStyle[];
+  style?: TextStyle | TextStyle[];
   size?: 'small' | 'medium' | 'large';
   weight?: 'light' | 'regular' | 'semiBold' | 'bold';
   color?: 'black' | 'white' | 'gray';
@@ -12,7 +12,7 @@ interface CustomTextProps {
 }
 
 const CustomText = ({
-  customStyle,
+  style,
   size = 'small',
   weight = 'regular',
   color = 'black',
@@ -27,7 +27,7 @@ const CustomText = ({
         styles[color],
         styles.default,
         styles[align],
-        customStyle,
+        style,
       ]}>
       {children}
     </Text>

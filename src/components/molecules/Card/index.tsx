@@ -1,10 +1,11 @@
 import React, {ReactNode} from 'react';
-import {View} from 'react-native';
+import {TextStyle, View} from 'react-native';
 
 import styles from './styles';
 
 interface CardProps {
   children?: ReactNode;
+  style?: TextStyle | TextStyle[];
 }
 
 const Card = ({children}: CardProps) => {

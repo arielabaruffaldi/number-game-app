@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {TextInput, View} from 'react-native';
+import React from 'react';
+import {TextInput, TextStyle} from 'react-native';
 
 import styles from './styles';
 
@@ -13,6 +13,7 @@ interface InputProps {
     | 'phone-pad';
   placeholder?: string;
   defaultValue?: string;
+  style: TextStyle | TextStyle[];
   value?: string;
   onChangeText: (text: string) => void;
 }
@@ -21,11 +22,12 @@ const Input = ({
   keyboardType = 'default',
   placeholder,
   value,
+  style,
   onChangeText,
 }: InputProps) => {
   return (
     <TextInput
-      style={styles.input}
+      style={[styles.input, style && style]}
       autoFocus={true}
       keyboardType={keyboardType}
       placeholder={placeholder}

@@ -11,7 +11,7 @@ interface HeaderProps {
 const Header = ({title}: HeaderProps) => {
   return (
     <View style={styles.container}>
-      <CustomText customStyle={[styles.title]} align="center" size="large">
+      <CustomText style={[styles.title]} align="center" size="large">
         {title}
       </CustomText>
     </View>

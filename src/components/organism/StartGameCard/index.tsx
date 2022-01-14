@@ -1,15 +1,20 @@
+import React, {useState} from 'react';
+
 import Button from '@atoms/Button';
 import CustomText from '@atoms/CustomText';
 import Card from '@molecules/Card';
 import Input from '@molecules/Input';
-import React, {useState} from 'react';
 import {View} from 'react-native';
 import styles from './styles';
 
-const StartGameCard = () => {
-  const [number, setNumber] = useState(' ');
+interface StartGameCardProps {
+  action: (val: string) => void;
+}
+
+const StartGameCard = ({action}: StartGameCardProps) => {
+  const [value, setValue] = useState('')
   const handleChangeNumber = (val: string) => {
-    setNumber(val);
+    setValue(val);
   };
 
   return (
@@ -17,15 +22,16 @@ const StartGameCard = () => {
       <Input
         onChangeText={handleChangeNumber}
         placeholder="Elegí un número"
-        value={number}
+        value={value}
         keyboardType="numeric"
+        style={styles.input}
       />
       <View style={styles.buttonContainer}>
-        <Button disabled={!number} onPress={() => setNumber(' ')}>
-          <CustomText customStyle={[styles.buttonText]}>Limpiar</CustomText>
+        <Button disabled={!value} onPress={() => action('')}>
+          <CustomText style={[styles.buttonText]}>Limpiar</CustomText>
         </Button>
-        <Button disabled={!number} onPress={() => setNumber(' ')}>
-          <CustomText customStyle={[styles.buttonText]}>Confirmar</CustomText>
+        <Button disabled={!value} onPress={() => action(value)}>
+          <CustomText style={[styles.buttonText]}>Confirmar</CustomText>
         </Button>
       </View>
     </Card>
